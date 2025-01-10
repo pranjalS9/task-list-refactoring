@@ -52,16 +52,17 @@ public final class TaskList {
             projectList.addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
-            addTask(projectTask[0], projectTask[1]);
+            addTask(projectTask[0], projectTask[1], nextId(), projects);
         }
     }
 
-    private void addTask(String project, String description) {
+    // I don't belong here
+    private static void addTask(String project, String description, long nextId, Map<String, List<Task>> projects) {
         List<com.codurance.training.tasks.Task> projectTasks = projects.get(project);
         if (projectTasks == null) {
             throw new IllegalArgumentException("Unknown project: " + project);
         }
-        projectTasks.add(new com.codurance.training.tasks.Task(nextId(), description, false));
+        projectTasks.add(new com.codurance.training.tasks.Task(nextId, description, false));
     }
 
     private void check(String idString) {
