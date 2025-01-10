@@ -24,7 +24,7 @@ public final class TaskList {
         String command = commandRest[0];
         switch (command) {
             case "show":
-                show();
+                show(writer, projects);
                 break;
             case "add":
                 add(commandRest[1]);
@@ -40,7 +40,8 @@ public final class TaskList {
         }
     }
 
-    private void show() throws IOException {
+    // I don't belong here
+    private static void show(Writer writer, Map<String, List<Task>> projects) throws IOException {
         for (Map.Entry<String, List<com.codurance.training.tasks.Task>> project : projects.entrySet()) {
             writer.write(project.getKey());
             writer.write("\n");
