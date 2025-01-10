@@ -1,8 +1,9 @@
 package com.codurance.training.tasks;
 
 import com.codurance.training.Command;
+import com.codurance.training.Projects;
+
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,17 +46,14 @@ public final class TaskList {
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
+        Projects projectList = new Projects(projects);
+
         if (subcommand.equals("project")) {
-            addProject(subcommandRest[1], projects);
+            projectList.addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
             addTask(projectTask[0], projectTask[1]);
         }
-    }
-
-    // I don't belong here
-    private static void addProject(String name, Map<String, List<Task>> projects) {
-        projects.put(name, new ArrayList<>());
     }
 
     private void addTask(String project, String description) {
