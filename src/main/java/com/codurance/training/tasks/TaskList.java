@@ -1,6 +1,6 @@
 package com.codurance.training.tasks;
 
-import java.io.IOException;
+import com.codurance.training.Command;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -22,9 +22,11 @@ public final class TaskList {
     public void execute(String commandLine) throws Exception {
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];
+        Command commandMethods = new Command(projects, writer);
+
         switch (command) {
             case "show":
-                show(writer, projects);
+                commandMethods.show();
                 break;
             case "add":
                 add(commandRest[1]);
@@ -37,17 +39,6 @@ public final class TaskList {
                 break;
             default:
                 throw new IllegalArgumentException("Unknown command: " + command);
-        }
-    }
-
-    // I don't belong here
-    private static void show(Writer writer, Map<String, List<Task>> projects) throws IOException {
-        for (Map.Entry<String, List<com.codurance.training.tasks.Task>> project : projects.entrySet()) {
-            writer.write(project.getKey());
-            writer.write("\n");
-            for (com.codurance.training.tasks.Task task : project.getValue()) {
-                writer.write(String.format("[%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription()));
-            }
         }
     }
 
