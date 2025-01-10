@@ -46,14 +46,15 @@ public final class TaskList {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
         if (subcommand.equals("project")) {
-            addProject(subcommandRest[1]);
+            addProject(subcommandRest[1], projects);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
             addTask(projectTask[0], projectTask[1]);
         }
     }
 
-    private void addProject(String name) {
+    // I don't belong here
+    private static void addProject(String name, Map<String, List<Task>> projects) {
         projects.put(name, new ArrayList<>());
     }
 
