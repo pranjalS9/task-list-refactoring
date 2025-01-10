@@ -48,4 +48,19 @@ public class TaskListTest {
         String actualOutput = writer.toString().replace("\r\n", "\n");
         assertEquals(expectedOutput, actualOutput);
     }
+
+    @Test
+    public void executeAddProjectWithOneTaskAndThenCheckTest() throws Exception {
+        StringWriter writer = new StringWriter();
+        TaskList taskList = new TaskList(writer);
+
+        taskList.execute("add project Project-1");
+        taskList.execute("add task Project-1 Task-1");
+        taskList.execute("check 1");
+        taskList.execute("show");
+
+        String expectedOutput = "Project-1\n" + "[x] 1: Task-1\n";
+        String actualOutput = writer.toString().replace("\r\n", "\n");
+        assertEquals(expectedOutput, actualOutput);
+    }
 }
