@@ -4,9 +4,6 @@ import com.codurance.training.Command;
 import com.codurance.training.Projects;
 
 import java.io.Writer;
-import java.util.List;
-
-import static java.lang.System.out;
 
 public final class TaskList {
 
@@ -31,7 +28,7 @@ public final class TaskList {
                 add(commandRest[1]);
                 break;
             case "check":
-                check(commandRest[1]);
+                check(commandRest[1], commandMethods, projects);
                 break;
             case "uncheck":
                 uncheck(commandRest[1]);
@@ -57,29 +54,13 @@ public final class TaskList {
         }
     }
 
-    private void check(String idString) {
-        setDone(idString, true, projects);
+    // I don't belong here
+    private static void check(String idString, Command commandMethods, Projects projects) {
+        commandMethods.setDone(idString, true, projects);
     }
 
     private void uncheck(String idString) {
-        setDone(idString, false, projects);
-    }
-
-    // I don't belong here
-    private static void setDone(String idString, boolean done, Projects projects) {
-        int id = Integer.parseInt(idString);
-        List<String> projectNames = projects.getProjectNames();
-        for (String projectName : projectNames) {
-            List<Task> tasks = projects.getProjectTasks(projectName);
-            for (Task task : tasks) {
-                if (task.getId() == id) {
-                    task.setDone(done);
-                    return;
-                }
-            }
-        }
-        out.printf("Could not find a task with an ID of %d.", id);
-        out.println();
+        commandMethods.setDone(idString, false, projects);
     }
 
     private long nextId() {
