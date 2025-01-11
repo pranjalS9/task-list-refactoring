@@ -24,7 +24,7 @@ public final class TaskList {
                 commandMethods.show();
                 break;
             case "add":
-                add(commandRest[1]);
+                add(commandRest[1], projects);
                 break;
             case "check":
                 commandMethods.check(commandRest[1], projects);
@@ -37,7 +37,8 @@ public final class TaskList {
         }
     }
 
-    private void add(String commandLine) {
+    // I don't belong here
+    private void add(String commandLine, Projects projects) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
 
