@@ -12,6 +12,19 @@ import static org.junit.Assert.*;
 public class ProjectsTest {
 
     @Test
+    public void addProjectTest() {
+        Map<String, List<Task>> projectsMap = new LinkedHashMap<>();
+        Projects projects = new Projects(projectsMap);
+        String projectName = "Project-1";
+
+        projects.addProject(projectName);
+        List<Task> tasks = projects.getProjectTasks(projectName);
+
+        assertNotNull(tasks);
+        assertTrue(tasks.isEmpty());
+    }
+
+    @Test
     public void addTaskInAExistingProjectSuccessfullyTest() {
         Map<String, List<Task>> projectsMap = new LinkedHashMap<>();
         Projects projects = new Projects(projectsMap);
