@@ -9,7 +9,6 @@ public final class TaskList {
 
     private final Projects projects;
     private final Command commandMethods;
-    private long lastId = 0;
 
     public TaskList(Writer writer) {
         this.projects = new Projects();
@@ -47,14 +46,11 @@ public final class TaskList {
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
 
-            Task task = new Task(nextId(), projectTask[1], false);
+            Task task = new Task(projects.nextId(), projectTask[1], false);
             String projectName = projectTask[0];
 
             projects.addTask(projectName, task);
         }
     }
 
-    private long nextId() {
-        return ++lastId;
-    }
 }

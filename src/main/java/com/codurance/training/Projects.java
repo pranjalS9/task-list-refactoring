@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class Projects {
     private final Map<String, List<Task>> projects = new LinkedHashMap<>();
+    private long lastId = 0;
 
     public void addTask(String projectName, Task task) {
         List<Task> projectTasks = getProjectTasks(projectName);
@@ -28,5 +29,9 @@ public class Projects {
 
     public void addProject(String name) {
         projects.put(name, new ArrayList<>());
+    }
+
+    public long nextId() {
+        return ++lastId;
     }
 }
