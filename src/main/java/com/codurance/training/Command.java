@@ -29,6 +29,14 @@ public class Command {
         }
     }
 
+    public void check(String idString, Projects projects) {
+        setDone(idString, true, projects);
+    }
+
+    public void uncheck(String idString, Projects projects) {
+        setDone(idString, false, projects);
+    }
+
     public void setDone(String idString, boolean done, Projects projects) {
         int id = Integer.parseInt(idString);
         List<String> projectNames = projects.getProjectNames();
@@ -43,9 +51,5 @@ public class Command {
         }
         out.printf("Could not find a task with an ID of %d.", id);
         out.println();
-    }
-
-    public void check(String idString, Command commandMethods, Projects projects) {
-        commandMethods.setDone(idString, true, projects);
     }
 }
