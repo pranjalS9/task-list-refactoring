@@ -77,4 +77,15 @@ public class ProjectsTest {
         assertTrue(tasks.contains(task1));
         assertTrue(tasks.contains(task2));
     }
+
+    @Test
+    public void nextIdReturnSequentialUniqueIdsTest() {
+        Projects projects = new Projects();
+
+        long firstId = projects.nextId();
+        long secondId = projects.nextId();
+
+        assertEquals(1, firstId);
+        assertEquals(2, secondId);
+    }
 }
