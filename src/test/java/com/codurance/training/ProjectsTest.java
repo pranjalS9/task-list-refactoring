@@ -27,4 +27,16 @@ public class ProjectsTest {
         assertEquals(1, tasks.size());
         assertTrue(tasks.contains(task));
     }
+
+    @Test
+    public void addTaskInAnUnknownProjectThrowExceptionTest() {
+        Map<String, List<Task>> projectsMap = new LinkedHashMap<>();
+        Projects projects = new Projects(projectsMap);
+        String projectName = "Project-1";
+        Task task = new Task(1, "My Test", false);
+
+        List<Task> tasks = projects.getProjectTasks(projectName);
+        assertNull(tasks);
+        assertThrows(IllegalArgumentException.class, () -> projects.addTask(projectName, task));
+    }
 }
