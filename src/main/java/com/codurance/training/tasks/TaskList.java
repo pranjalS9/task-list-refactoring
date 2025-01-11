@@ -31,7 +31,7 @@ public final class TaskList {
                 commandMethods.check(commandRest[1], commandMethods, projects);
                 break;
             case "uncheck":
-                uncheck(commandRest[1]);
+                uncheck(commandRest[1], commandMethods, projects);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown command: " + command);
@@ -54,7 +54,8 @@ public final class TaskList {
         }
     }
 
-    private void uncheck(String idString) {
+    // I don't belong here
+    private void uncheck(String idString, Command commandMethods, Projects projects) {
         commandMethods.setDone(idString, false, projects);
     }
 
