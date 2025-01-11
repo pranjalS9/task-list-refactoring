@@ -58,7 +58,7 @@ public final class TaskList {
             String projectName = projectTask[0];
 
             Project project = new Project(projectName, task);
-            project.addTask(projects);
+            project.addTask(projects, projectName, task);
         }
     }
 

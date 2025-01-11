@@ -14,7 +14,8 @@ public class Project {
         this.task = task;
     }
 
-    public void addTask(Map<String, List<Task>> projects) {
+    // I don't belong here
+    public static void addTask(Map<String, List<Task>> projects, String projectName, Task task) {
         List<Task> projectTasks = projects.get(projectName);
         if (projectTasks == null) {
             throw new IllegalArgumentException("Unknown project: " + projectName);
