@@ -24,9 +24,14 @@ public class Commands {
             writer.write("\n");
             List<Task> tasks = projects.getProjectTasks(projectName);
             for (Task task : tasks) {
-                writer.write(String.format("[%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription()));
+                writer.write(getFormattedTaskString(task));
             }
         }
+    }
+
+    // I don't belong here
+    private static String getFormattedTaskString(Task task) {
+        return String.format("[%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());
     }
 
     public void check(String idString, Projects projects) {
