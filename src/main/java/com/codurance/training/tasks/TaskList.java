@@ -57,8 +57,7 @@ public final class TaskList {
             Task task = new Task(nextId(), projectTask[1], false);
             String projectName = projectTask[0];
 
-            Project project = new Project(projectName, task);
-            project.addTask(projects, projectName, task);
+            projectList.addTask(projectName, task);
         }
     }
 

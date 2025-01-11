@@ -13,6 +13,14 @@ public class Projects {
         this.projects = projects;
     }
 
+    public void addTask(String projectName, Task task) {
+        List<Task> projectTasks = projects.get(projectName);
+        if (projectTasks == null) {
+            throw new IllegalArgumentException("Unknown project: " + projectName);
+        }
+        projectTasks.add(task);
+    }
+
     public void addProject(String name) {
         projects.put(name, new ArrayList<>());
     }
