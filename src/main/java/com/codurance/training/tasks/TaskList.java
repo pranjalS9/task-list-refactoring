@@ -1,6 +1,7 @@
 package com.codurance.training.tasks;
 
 import com.codurance.training.Command;
+import com.codurance.training.Project;
 import com.codurance.training.Projects;
 
 import java.io.Writer;
@@ -52,17 +53,10 @@ public final class TaskList {
             projectList.addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
-            addTask(projectTask[0], projectTask[1], nextId(), projects);
-        }
-    }
 
-    // I don't belong here
-    private static void addTask(String project, String description, long nextId, Map<String, List<Task>> projects) {
-        List<com.codurance.training.tasks.Task> projectTasks = projects.get(project);
-        if (projectTasks == null) {
-            throw new IllegalArgumentException("Unknown project: " + project);
+            Project project = new Project(projectTask[0], projectTask[1], nextId());
+            project.addTask(projects);
         }
-        projectTasks.add(new com.codurance.training.tasks.Task(nextId, description, false));
     }
 
     private void check(String idString) {
