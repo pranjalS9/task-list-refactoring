@@ -14,11 +14,15 @@ public class Projects {
     }
 
     public void addTask(String projectName, Task task) {
-        List<Task> projectTasks = projects.get(projectName);
+        List<Task> projectTasks = getProjectTasks(projectName);
         if (projectTasks == null) {
             throw new IllegalArgumentException("Unknown project: " + projectName);
         }
         projectTasks.add(task);
+    }
+
+    public List<Task> getProjectTasks(String projectName) {
+        return projects.get(projectName);
     }
 
     public void addProject(String name) {
