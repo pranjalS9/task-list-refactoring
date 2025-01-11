@@ -59,4 +59,22 @@ public class ProjectsTest {
 
         assertEquals(List.of(projectName1, projectName2), projectNames);
     }
+
+    @Test
+    public void getProjectTasksTest() {
+        Projects projects = new Projects();
+        String projectName = "Project-1";
+        Task task1 = new Task(1, "My Test 1", false);
+        Task task2 = new Task(2, "My Test 2", true);
+
+        projects.addProject(projectName);
+        projects.addTask(projectName, task1);
+        projects.addTask(projectName, task2);
+
+        List<Task> tasks = projects.getProjectTasks(projectName);
+
+        assertEquals(2, tasks.size());
+        assertTrue(tasks.contains(task1));
+        assertTrue(tasks.contains(task2));
+    }
 }
