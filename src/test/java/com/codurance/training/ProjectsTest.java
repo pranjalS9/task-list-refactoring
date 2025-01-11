@@ -13,8 +13,7 @@ public class ProjectsTest {
 
     @Test
     public void addProjectTest() {
-        Map<String, List<Task>> projectsMap = new LinkedHashMap<>();
-        Projects projects = new Projects(projectsMap);
+        Projects projects = new Projects();
         String projectName = "Project-1";
 
         projects.addProject(projectName);
@@ -26,8 +25,7 @@ public class ProjectsTest {
 
     @Test
     public void addTaskInAExistingProjectSuccessfullyTest() {
-        Map<String, List<Task>> projectsMap = new LinkedHashMap<>();
-        Projects projects = new Projects(projectsMap);
+        Projects projects = new Projects();
         String projectName = "Project-1";
         Task task = new Task(1, "My Test", false);
 
@@ -43,8 +41,7 @@ public class ProjectsTest {
 
     @Test
     public void addTaskInAnUnknownProjectThrowExceptionTest() {
-        Map<String, List<Task>> projectsMap = new LinkedHashMap<>();
-        Projects projects = new Projects(projectsMap);
+        Projects projects = new Projects();
         String projectName = "Project-1";
         Task task = new Task(1, "My Test", false);
 

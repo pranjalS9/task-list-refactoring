@@ -8,19 +8,21 @@ import java.util.List;
 import java.util.Map;
 
 public class Command {
-    private final Map<String, List<Task>> projects;
+    private final Projects projects;
     private final Writer writer;
 
-    public Command(Map<String, List<Task>> projects, Writer writer) {
+    public Command(Projects projects, Writer writer) {
         this.projects = projects;
         this.writer = writer;
     }
 
     public void show() throws IOException {
-        for (Map.Entry<String, List<Task>> project : projects.entrySet()) {
-            writer.write(project.getKey());
+        List<String> projectNames = projects.getProjectNames();
+        for (String projectName : projectNames) {
+            writer.write(projectName);
             writer.write("\n");
-            for (Task task : project.getValue()) {
+            List<Task> tasks = projects.getProjectTasks(projectName);
+            for (Task task : tasks) {
                 writer.write(String.format("[%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription()));
             }
         }

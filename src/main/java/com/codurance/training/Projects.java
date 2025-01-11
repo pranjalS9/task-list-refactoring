@@ -3,15 +3,12 @@ package com.codurance.training;
 import com.codurance.training.tasks.Task;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Projects {
-    private final Map<String, List<Task>> projects;
-
-    public Projects(Map<String, List<Task>> projects) {
-        this.projects = projects;
-    }
+    private final Map<String, List<Task>> projects = new LinkedHashMap<>();
 
     public void addTask(String projectName, Task task) {
         List<Task> projectTasks = getProjectTasks(projectName);
@@ -19,6 +16,10 @@ public class Projects {
             throw new IllegalArgumentException("Unknown project: " + projectName);
         }
         projectTasks.add(task);
+    }
+
+    public List<String> getProjectNames() {
+        return new ArrayList<>(projects.keySet());
     }
 
     public List<Task> getProjectTasks(String projectName) {

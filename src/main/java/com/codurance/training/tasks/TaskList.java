@@ -4,26 +4,24 @@ import com.codurance.training.Command;
 import com.codurance.training.Projects;
 
 import java.io.Writer;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import static java.lang.System.out;
 
 public final class TaskList {
 
-    private final Map<String, List<Task>> projects = new LinkedHashMap<>();
-    private final Writer writer;
+    private final Projects projects;
+    private final Command commandMethods;
     private long lastId = 0;
 
     public TaskList(Writer writer) {
-        this.writer = writer;
+        this.projects = new Projects();
+        this.commandMethods = new Command(projects, writer);
     }
 
     public void execute(String commandLine) throws Exception {
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];
-        Command commandMethods = new Command(projects, writer);
 
         switch (command) {
             case "show":
@@ -46,17 +44,16 @@ public final class TaskList {
     private void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
-        Projects projectList = new Projects(projects);
 
         if (subcommand.equals("project")) {
-            projectList.addProject(subcommandRest[1]);
+            projects.addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
 
             Task task = new Task(nextId(), projectTask[1], false);
             String projectName = projectTask[0];
 
-            projectList.addTask(projectName, task);
+            projects.addTask(projectName, task);
         }
     }
 
@@ -70,8 +67,10 @@ public final class TaskList {
 
     private void setDone(String idString, boolean done) {
         int id = Integer.parseInt(idString);
-        for (Map.Entry<String, List<com.codurance.training.tasks.Task>> project : projects.entrySet()) {
-            for (com.codurance.training.tasks.Task task : project.getValue()) {
+        List<String> projectNames = projects.getProjectNames();
+        for (String projectName : projectNames) {
+            List<Task> tasks = projects.getProjectTasks(projectName);
+            for (Task task : tasks) {
                 if (task.getId() == id) {
                     task.setDone(done);
                     return;
