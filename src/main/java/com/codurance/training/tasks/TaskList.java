@@ -54,7 +54,10 @@ public final class TaskList {
         } else if (subcommand.equals("task")) {
             String[] projectTask = subcommandRest[1].split(" ", 2);
 
-            Project project = new Project(projectTask[0], projectTask[1], nextId());
+            Task task = new Task(nextId(), projectTask[1], false);
+            String projectName = projectTask[0];
+
+            Project project = new Project(projectName, task);
             project.addTask(projects);
         }
     }

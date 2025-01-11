@@ -7,13 +7,11 @@ import java.util.Map;
 
 public class Project {
     private final String projectName;
-    private final String taskDescription;
-    private final long taskId;
+    private final Task task;
 
-    public Project(String projectName, String description, long taskId) {
+    public Project(String projectName, Task task) {
         this.projectName = projectName;
-        this.taskDescription = description;
-        this.taskId = taskId;
+        this.task = task;
     }
 
     public void addTask(Map<String, List<Task>> projects) {
@@ -21,6 +19,6 @@ public class Project {
         if (projectTasks == null) {
             throw new IllegalArgumentException("Unknown project: " + projectName);
         }
-        projectTasks.add(new Task(taskId, taskDescription, false));
+        projectTasks.add(task);
     }
 }
