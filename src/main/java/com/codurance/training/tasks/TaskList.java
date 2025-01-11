@@ -24,7 +24,7 @@ public final class TaskList {
                 commandMethods.show();
                 break;
             case "add":
-                add(commandRest[1], projects);
+                commandMethods.add(commandRest[1], projects);
                 break;
             case "check":
                 commandMethods.check(commandRest[1], projects);
@@ -36,22 +36,4 @@ public final class TaskList {
                 throw new IllegalArgumentException("Unknown command: " + command);
         }
     }
-
-    // I don't belong here
-    private void add(String commandLine, Projects projects) {
-        String[] subcommandRest = commandLine.split(" ", 2);
-        String subcommand = subcommandRest[0];
-
-        if (subcommand.equals("project")) {
-            projects.addProject(subcommandRest[1]);
-        } else if (subcommand.equals("task")) {
-            String[] projectTask = subcommandRest[1].split(" ", 2);
-
-            Task task = new Task(projects.nextId(), projectTask[1], false);
-            String projectName = projectTask[0];
-
-            projects.addTask(projectName, task);
-        }
-    }
-
 }
