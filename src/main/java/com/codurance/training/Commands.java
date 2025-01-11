@@ -24,8 +24,7 @@ public class Commands {
             writer.write("\n");
             List<Task> tasks = projects.getProjectTasks(projectName);
             for (Task t : tasks) {
-                Task task = new Task(t.getId(), t.getDescription(), t.isDone());
-                writer.write(task.getFormattedTaskString());
+                writer.write(t.getFormattedTaskString());
             }
         }
     }
