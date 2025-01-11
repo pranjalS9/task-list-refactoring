@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Map;
 
 public class Project {
-    private final String project;
-    private final String description;
-    private final long nextId;
+    private final String projectName;
+    private final String taskDescription;
+    private final long taskId;
 
-    public Project(String project, String description, long nextId) {
-        this.project = project;
-        this.description = description;
-        this.nextId = nextId;
+    public Project(String projectName, String description, long taskId) {
+        this.projectName = projectName;
+        this.taskDescription = description;
+        this.taskId = taskId;
     }
 
     public void addTask(Map<String, List<Task>> projects) {
-        List<Task> projectTasks = projects.get(project);
+        List<Task> projectTasks = projects.get(projectName);
         if (projectTasks == null) {
-            throw new IllegalArgumentException("Unknown project: " + project);
+            throw new IllegalArgumentException("Unknown project: " + projectName);
         }
-        projectTasks.add(new Task(nextId, description, false));
+        projectTasks.add(new Task(taskId, taskDescription, false));
     }
 }
