@@ -5,7 +5,6 @@ import com.codurance.training.tasks.Task;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
-import java.util.Map;
 
 public class Command {
     private final Projects projects;

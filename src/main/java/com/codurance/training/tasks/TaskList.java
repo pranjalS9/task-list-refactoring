@@ -58,14 +58,15 @@ public final class TaskList {
     }
 
     private void check(String idString) {
-        setDone(idString, true);
+        setDone(idString, true, projects);
     }
 
     private void uncheck(String idString) {
-        setDone(idString, false);
+        setDone(idString, false, projects);
     }
 
-    private void setDone(String idString, boolean done) {
+    // I don't belong here
+    private static void setDone(String idString, boolean done, Projects projects) {
         int id = Integer.parseInt(idString);
         List<String> projectNames = projects.getProjectNames();
         for (String projectName : projectNames) {
