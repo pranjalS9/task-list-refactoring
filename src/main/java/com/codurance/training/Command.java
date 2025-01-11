@@ -44,4 +44,8 @@ public class Command {
         out.printf("Could not find a task with an ID of %d.", id);
         out.println();
     }
+
+    public void check(String idString, Command commandMethods, Projects projects) {
+        commandMethods.setDone(idString, true, projects);
+    }
 }

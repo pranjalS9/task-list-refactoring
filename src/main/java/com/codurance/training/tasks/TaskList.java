@@ -28,7 +28,7 @@ public final class TaskList {
                 add(commandRest[1]);
                 break;
             case "check":
-                check(commandRest[1], commandMethods, projects);
+                commandMethods.check(commandRest[1], commandMethods, projects);
                 break;
             case "uncheck":
                 uncheck(commandRest[1]);
@@ -52,11 +52,6 @@ public final class TaskList {
 
             projects.addTask(projectName, task);
         }
-    }
-
-    // I don't belong here
-    private static void check(String idString, Command commandMethods, Projects projects) {
-        commandMethods.setDone(idString, true, projects);
     }
 
     private void uncheck(String idString) {
