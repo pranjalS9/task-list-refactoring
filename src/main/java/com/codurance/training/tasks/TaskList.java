@@ -1,6 +1,6 @@
 package com.codurance.training.tasks;
 
-import com.codurance.training.Command;
+import com.codurance.training.Commands;
 import com.codurance.training.Projects;
 
 import java.io.Writer;
@@ -8,11 +8,11 @@ import java.io.Writer;
 public final class TaskList {
 
     private final Projects projects;
-    private final Command commandMethods;
+    private final Commands commands;
 
     public TaskList(Writer writer) {
         this.projects = new Projects();
-        this.commandMethods = new Command(projects, writer);
+        this.commands = new Commands(projects, writer);
     }
 
     public void execute(String commandLine) throws Exception {
@@ -21,16 +21,16 @@ public final class TaskList {
 
         switch (command) {
             case "show":
-                commandMethods.show();
+                commands.show();
                 break;
             case "add":
-                commandMethods.add(commandRest[1], projects);
+                commands.add(commandRest[1], projects);
                 break;
             case "check":
-                commandMethods.check(commandRest[1], projects);
+                commands.check(commandRest[1], projects);
                 break;
             case "uncheck":
-                commandMethods.uncheck(commandRest[1], projects);
+                commands.uncheck(commandRest[1], projects);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown command: " + command);

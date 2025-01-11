@@ -8,11 +8,11 @@ import java.util.List;
 
 import static java.lang.System.out;
 
-public class Command {
+public class Commands {
     private final Projects projects;
     private final Writer writer;
 
-    public Command(Projects projects, Writer writer) {
+    public Commands(Projects projects, Writer writer) {
         this.projects = projects;
         this.writer = writer;
     }
