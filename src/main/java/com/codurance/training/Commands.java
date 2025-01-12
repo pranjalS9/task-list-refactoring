@@ -29,15 +29,15 @@ public class Commands {
         }
     }
 
-    public void check(String idString, Projects projects) {
-        setDone(idString, true, projects);
+    public void check(String idString) {
+        setDone(idString, true);
     }
 
-    public void uncheck(String idString, Projects projects) {
-        setDone(idString, false, projects);
+    public void uncheck(String idString) {
+        setDone(idString, false);
     }
 
-    public void setDone(String idString, boolean done, Projects projects) {
+    public void setDone(String idString, boolean done) {
         int id = Integer.parseInt(idString);
         List<String> projectNames = projects.getProjectNames();
         for (String projectName : projectNames) {
@@ -53,7 +53,7 @@ public class Commands {
         out.println();
     }
 
-    public void add(String commandLine, Projects projects) {
+    public void add(String commandLine) {
         String[] subcommandRest = commandLine.split(" ", 2);
         String subcommand = subcommandRest[0];
 

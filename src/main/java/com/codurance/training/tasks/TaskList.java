@@ -7,11 +7,10 @@ import java.io.Writer;
 
 public final class TaskList {
 
-    private final Projects projects;
     private final Commands commands;
 
     public TaskList(Writer writer) {
-        this.projects = new Projects();
+        Projects projects = new Projects();
         this.commands = new Commands(projects, writer);
     }
 
@@ -24,13 +23,13 @@ public final class TaskList {
                 commands.show();
                 break;
             case "add":
-                commands.add(commandRest[1], projects);
+                commands.add(commandRest[1]);
                 break;
             case "check":
-                commands.check(commandRest[1], projects);
+                commands.check(commandRest[1]);
                 break;
             case "uncheck":
-                commands.uncheck(commandRest[1], projects);
+                commands.uncheck(commandRest[1]);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown command: " + command);
