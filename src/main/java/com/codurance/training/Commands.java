@@ -60,12 +60,17 @@ public class Commands {
         if (subcommand.equals("project")) {
             projects.addProject(subcommandRest[1]);
         } else if (subcommand.equals("task")) {
-            String[] projectTask = subcommandRest[1].split(" ", 2);
-
-            Task task = new Task(projects.nextId(), projectTask[1], false);
-            String projectName = projectTask[0];
-
-            projects.addTask(projectName, task);
+            handleTaskCommand(subcommandRest[1]);
         }
+    }
+
+    private void handleTaskCommand(String arguments) {
+        String[] projectTask = arguments.split(" ", 2);
+
+        String projectName = projectTask[0];
+        String taskDescription = projectTask[1];
+        Task task = new Task(projects.nextId(), taskDescription, false);
+
+        projects.addTask(projectName, task);
     }
 }
