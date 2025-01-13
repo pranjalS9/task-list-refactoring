@@ -8,7 +8,7 @@ public class TaskTest {
 
     @Test
     public void taskInitializationTest() {
-        Task task = new Task(1, "Task 1", false);
+        Task task = new Task(1, "Test task", false);
         assertEquals(1, task.getId());
         assertEquals("Test task", task.getDescription());
         assertFalse(task.isDone());
@@ -16,7 +16,7 @@ public class TaskTest {
 
     @Test
     public void setTaskAsDoneTest() {
-        Task task = new Task(1, "Task 1", false);
+        Task task = new Task(1, "Test task", false);
         task.setDone(true);
         assertTrue(task.isDone());
     }
