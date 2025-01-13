@@ -9,7 +9,7 @@ import java.io.StringWriter;
 
 import static org.junit.Assert.assertEquals;
 
-public class TaskListTest {
+public class CommandExecutorTest {
 
     @Test
     public void executeAddProjectWithNoTaskTest() throws Exception {
