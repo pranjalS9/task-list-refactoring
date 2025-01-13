@@ -1,4 +1,4 @@
-package com.codurance.training;
+package com.codurance.training.projects;
 
 import com.codurance.training.tasks.Task;
 
@@ -35,7 +35,7 @@ public class Projects {
         return ++lastId;
     }
 
-    String getTasksAsFormattedString(List<Task> tasks) {
+    public String getTasksAsFormattedString(List<Task> tasks) {
         StringBuilder outputString = new StringBuilder();
         for (Task t : tasks) {
             outputString.append(t.getFormattedTaskString());
