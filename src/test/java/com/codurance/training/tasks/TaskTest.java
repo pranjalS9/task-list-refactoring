@@ -46,4 +46,11 @@ public class TaskTest {
         String expected = "[ ] 1: Test task\n";
         assertEquals(expected, task.getFormattedTaskString().replace("\r\n", "\n"));
     }
+
+    @Test
+    public void getFormattedTaskStringDoneTest() {
+        Task task = new Task(1, "Test task", true);
+        String expected = "[x] 1: Test task\n";
+        assertEquals(expected, task.getFormattedTaskString().replace("\r\n", "\n"));
+    }
 }
