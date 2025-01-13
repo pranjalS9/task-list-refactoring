@@ -1,5 +1,6 @@
-package com.codurance.training;
+package com.codurance.training.commands;
 
+import com.codurance.training.Projects;
 import com.codurance.training.tasks.Task;
 
 import java.io.IOException;

@@ -43,7 +43,7 @@ public class Projects {
         return outputString.toString();
     }
 
-    String getProjectsAsFormattedString(List<String> projectNames) {
+    public String getProjectsAsFormattedString(List<String> projectNames) {
         StringBuilder projectsAsFormattedString = new StringBuilder();
         for (String projectName : projectNames) {
             List<Task> tasks = getProjectTasks(projectName);

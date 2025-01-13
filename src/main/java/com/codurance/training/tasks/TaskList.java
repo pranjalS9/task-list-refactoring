@@ -1,6 +1,6 @@
 package com.codurance.training.tasks;
 
-import com.codurance.training.Commands;
+import com.codurance.training.commands.Commands;
 import com.codurance.training.Projects;
 
 import java.io.Writer;
