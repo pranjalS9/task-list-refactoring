@@ -23,17 +23,7 @@ public class Commands {
     }
 
     private String getOutputString(List<String> projectNames) {
-        return getProjectsAsFormattedString(projectNames, projects);
-    }
-
-    // I don't belong here
-    private String getProjectsAsFormattedString(List<String> projectNames, Projects projects) {
-        String projectsAsFormattedString = "";
-        for (String projectName : projectNames) {
-            List<Task> tasks = projects.getProjectTasks(projectName);
-            projectsAsFormattedString = projectName + "\n" + projects.getTasksAsFormattedString(tasks);
-        }
-        return projectsAsFormattedString;
+        return projects.getProjectsAsFormattedString(projectNames);
     }
 
     public void check(String idString) {
