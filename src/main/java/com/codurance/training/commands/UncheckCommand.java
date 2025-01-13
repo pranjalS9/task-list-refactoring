@@ -1,16 +1,17 @@
 package com.codurance.training.commands;
 
 import com.codurance.training.commands.interfaces.ICommand;
+import com.codurance.training.commands.service.CommandService;
 
 public class UncheckCommand implements ICommand {
-    private final Commands commands;
+    private final CommandService commandService;
 
-    public UncheckCommand(Commands commands) {
-        this.commands = commands;
+    public UncheckCommand(CommandService commands) {
+        this.commandService = commands;
     }
 
     @Override
     public void execute(String args) {
-        commands.uncheck(args);
+        commandService.uncheck(args);
     }
 }

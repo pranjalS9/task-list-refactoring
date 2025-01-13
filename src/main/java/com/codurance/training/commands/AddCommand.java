@@ -1,16 +1,17 @@
 package com.codurance.training.commands;
 
 import com.codurance.training.commands.interfaces.ICommand;
+import com.codurance.training.commands.service.CommandService;
 
 public class AddCommand implements ICommand {
-    private final Commands commands;
+    private final CommandService commandService;
 
-    public AddCommand(Commands commands) {
-        this.commands = commands;
+    public AddCommand(CommandService commands) {
+        this.commandService = commands;
     }
 
     @Override
     public void execute(String args) {
-        commands.add(args);
+        commandService.add(args);
     }
 }

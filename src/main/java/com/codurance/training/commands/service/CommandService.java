@@ -1,4 +1,4 @@
-package com.codurance.training.commands;
+package com.codurance.training.commands.service;
 
 import com.codurance.training.Projects;
 import com.codurance.training.tasks.Task;
@@ -9,11 +9,11 @@ import java.util.List;
 
 import static java.lang.System.out;
 
-public class Commands {
+public class CommandService {
     private final Projects projects;
     private final Writer writer;
 
-    public Commands(Projects projects, Writer writer) {
+    public CommandService(Projects projects, Writer writer) {
         this.projects = projects;
         this.writer = writer;
     }

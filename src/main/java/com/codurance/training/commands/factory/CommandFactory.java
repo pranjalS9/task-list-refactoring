@@ -1,8 +1,8 @@
 package com.codurance.training.commands.factory;
 
-import com.codurance.training.commands.*;
 import com.codurance.training.commands.enums.CommandTypes;
 import com.codurance.training.commands.interfaces.ICommand;
+import com.codurance.training.commands.service.CommandService;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ public class CommandFactory {
         return commands.get(commandName);
     }
 
-    public void registerAll(Commands commandService) {
+    public void registerAll(CommandService commandService) {
         register(CommandTypes.SHOW, args -> commandService.show());
         register(CommandTypes.ADD, commandService::add);
         register(CommandTypes.CHECK, commandService::check);

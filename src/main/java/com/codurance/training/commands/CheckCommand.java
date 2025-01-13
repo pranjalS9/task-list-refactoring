@@ -1,16 +1,17 @@
 package com.codurance.training.commands;
 
 import com.codurance.training.commands.interfaces.ICommand;
+import com.codurance.training.commands.service.CommandService;
 
 public class CheckCommand implements ICommand {
-    private final Commands commands;
+    private final CommandService commandService;
 
-    public CheckCommand(Commands commands) {
-        this.commands = commands;
+    public CheckCommand(CommandService commands) {
+        this.commandService = commands;
     }
 
     @Override
     public void execute(String args) {
-        commands.check(args);
+        commandService.check(args);
     }
 }
