@@ -20,4 +20,11 @@ public class TaskTest {
         task.setDone(true);
         assertTrue(task.isDone());
     }
+
+    @Test
+    public void setTaskAsNotDoneTest() {
+        Task task = new Task(1, "Task 1", true);
+        task.setDone(false);
+        assertFalse(task.isDone());
+    }
 }
