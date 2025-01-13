@@ -1,47 +1,28 @@
 package com.codurance.training.tasks;
 
-import com.codurance.training.commands.*;
-import com.codurance.training.Projects;
-
-import java.io.Writer;
+import com.codurance.training.commands.enums.CommandTypes;
+import com.codurance.training.commands.factory.CommandFactory;
+import com.codurance.training.commands.interfaces.ICommand;
 
 public final class TaskList {
 
-    private final Commands commands;
-    private final ShowCommand showCommand;
-    private final AddCommand addCommand;
-    private final CheckCommand checkCommand;
-    private final UncheckCommand uncheckCommand;
+    private final CommandFactory commandFactory;
 
-    public TaskList(Writer writer) {
-        Projects projects = new Projects();
-        this.commands = new Commands(projects, writer);
-        this.showCommand = new ShowCommand(commands);
-        this.addCommand = new AddCommand(commands);
-        this.checkCommand = new CheckCommand(commands);
-        this.uncheckCommand = new UncheckCommand(commands);
+    public TaskList(CommandFactory commandFactory) {
+        this.commandFactory = commandFactory;
     }
 
-    public void execute(String commandLine) throws Exception {
+    public void execute(String commandLine) {
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];
         String args = commandRest.length > 1 ? commandRest[1] : "";
 
-        switch (command) {
-            case "show":
-                showCommand.execute(args);
-                break;
-            case "add":
-                addCommand.execute(args);
-                break;
-            case "check":
-                checkCommand.execute(args);
-                break;
-            case "uncheck":
-                uncheckCommand.execute(args);
-                break;
-            default:
-                throw new IllegalArgumentException("Unknown command: " + command);
+        try {
+            CommandTypes commandType = CommandTypes.getCommandType(command);
+            ICommand c = commandFactory.getCommand(commandType);
+            c.execute(args);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Unknown command: " + command);
         }
     }
 }

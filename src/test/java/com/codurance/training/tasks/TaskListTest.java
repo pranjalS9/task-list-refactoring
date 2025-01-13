@@ -1,5 +1,8 @@
 package com.codurance.training.tasks;
 
+import com.codurance.training.Projects;
+import com.codurance.training.commands.Commands;
+import com.codurance.training.commands.factory.CommandFactory;
 import org.junit.Test;
 
 import java.io.StringWriter;
@@ -11,7 +14,9 @@ public class TaskListTest {
     @Test
     public void executeAddProjectWithNoTaskTest() throws Exception {
         StringWriter writer = new StringWriter();
-        TaskList taskList = new TaskList(writer);
+        CommandFactory commandFactory = new CommandFactory();
+        commandFactory.registerAll(new Commands(new Projects(), writer));
+        TaskList taskList = new TaskList(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("show");
@@ -23,7 +28,9 @@ public class TaskListTest {
     @Test
     public void executeAddProjectWithOneTaskTest() throws Exception {
         StringWriter writer = new StringWriter();
-        TaskList taskList = new TaskList(writer);
+        CommandFactory commandFactory = new CommandFactory();
+        commandFactory.registerAll(new Commands(new Projects(), writer));
+        TaskList taskList = new TaskList(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
@@ -37,7 +44,9 @@ public class TaskListTest {
     @Test
     public void executeAddProjectWithMultipleTaskTest() throws Exception {
         StringWriter writer = new StringWriter();
-        TaskList taskList = new TaskList(writer);
+        CommandFactory commandFactory = new CommandFactory();
+        commandFactory.registerAll(new Commands(new Projects(), writer));
+        TaskList taskList = new TaskList(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
@@ -52,7 +61,9 @@ public class TaskListTest {
     @Test
     public void executeAddProjectWithOneTaskAndThenCheckTest() throws Exception {
         StringWriter writer = new StringWriter();
-        TaskList taskList = new TaskList(writer);
+        CommandFactory commandFactory = new CommandFactory();
+        commandFactory.registerAll(new Commands(new Projects(), writer));
+        TaskList taskList = new TaskList(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
@@ -67,7 +78,9 @@ public class TaskListTest {
     @Test
     public void executeAddProjectWithMultipleTaskThenCheckOneThenUncheckTest() throws Exception {
         StringWriter writer = new StringWriter();
-        TaskList taskList = new TaskList(writer);
+        CommandFactory commandFactory = new CommandFactory();
+        commandFactory.registerAll(new Commands(new Projects(), writer));
+        TaskList taskList = new TaskList(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
