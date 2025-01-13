@@ -23,14 +23,14 @@ public class Commands {
     }
 
     public void check(String idString) {
-        setDone(idString, true);
+        toggleTaskStatus(idString, true);
     }
 
     public void uncheck(String idString) {
-        setDone(idString, false);
+        toggleTaskStatus(idString, false);
     }
 
-    public void setDone(String idString, boolean done) {
+    public void toggleTaskStatus(String idString, boolean done) {
         int id = Integer.parseInt(idString);
         List<String> projectNames = projects.getProjectNames();
         for (String projectName : projectNames) {
