@@ -43,7 +43,7 @@ public class Commands {
         for (String projectName : projectNames) {
             List<Task> tasks = projects.getProjectTasks(projectName);
             for (Task task : tasks) {
-                if (task.getId() == id) {
+                if (task.isIdSame(id)) {
                     task.setDone(done);
                     return;
                 }

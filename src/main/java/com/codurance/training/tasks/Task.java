@@ -30,4 +30,8 @@ public final class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+    public boolean isIdSame(int id) {
+        return this.id == id;
+    }
 }
