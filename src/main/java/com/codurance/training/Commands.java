@@ -22,15 +22,18 @@ public class Commands {
         writer.write(getOutputString(projectNames));
     }
 
-    private String getOutputString(List<String> projectNames) throws IOException {
-        StringBuilder outputString = new StringBuilder();
+    private String getOutputString(List<String> projectNames) {
+        return getProjectsAsFormattedString(projectNames, projects);
+    }
+
+    // I don't belong here
+    private String getProjectsAsFormattedString(List<String> projectNames, Projects projects) {
+        String projectsAsFormattedString = "";
         for (String projectName : projectNames) {
-            outputString.append(projectName);
-            outputString.append("\n");
             List<Task> tasks = projects.getProjectTasks(projectName);
-            outputString.append(projects.getTasksAsFormattedString(tasks));
+            projectsAsFormattedString = projectName + "\n" + projects.getTasksAsFormattedString(tasks);
         }
-        return outputString.toString();
+        return projectsAsFormattedString;
     }
 
     public void check(String idString) {
