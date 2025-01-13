@@ -16,7 +16,7 @@ public class TaskListTest {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new Commands(new Projects(), writer));
-        TaskList taskList = new TaskList(commandFactory);
+        CommandExecutor taskList = new CommandExecutor(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("show");
@@ -30,7 +30,7 @@ public class TaskListTest {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new Commands(new Projects(), writer));
-        TaskList taskList = new TaskList(commandFactory);
+        CommandExecutor taskList = new CommandExecutor(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
@@ -46,7 +46,7 @@ public class TaskListTest {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new Commands(new Projects(), writer));
-        TaskList taskList = new TaskList(commandFactory);
+        CommandExecutor taskList = new CommandExecutor(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
@@ -63,7 +63,7 @@ public class TaskListTest {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new Commands(new Projects(), writer));
-        TaskList taskList = new TaskList(commandFactory);
+        CommandExecutor taskList = new CommandExecutor(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");
@@ -80,7 +80,7 @@ public class TaskListTest {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new Commands(new Projects(), writer));
-        TaskList taskList = new TaskList(commandFactory);
+        CommandExecutor taskList = new CommandExecutor(commandFactory);
 
         taskList.execute("add project Project-1");
         taskList.execute("add task Project-1 Task-1");

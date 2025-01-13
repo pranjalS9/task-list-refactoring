@@ -2,13 +2,12 @@ package com.codurance.training.tasks;
 
 import com.codurance.training.commands.enums.CommandTypes;
 import com.codurance.training.commands.factory.CommandFactory;
-import com.codurance.training.commands.interfaces.ICommand;
 
-public final class TaskList {
+public final class CommandExecutor {
 
     private final CommandFactory commandFactory;
 
-    public TaskList(CommandFactory commandFactory) {
+    public CommandExecutor(CommandFactory commandFactory) {
         this.commandFactory = commandFactory;
     }
 
@@ -18,9 +17,7 @@ public final class TaskList {
         String args = commandRest.length > 1 ? commandRest[1] : "";
 
         try {
-            CommandTypes commandType = CommandTypes.getCommandType(command);
-            ICommand c = commandFactory.getCommand(commandType);
-            c.execute(args);
+            commandFactory.getCommand(CommandTypes.getCommandType(command)).execute(args);
         } catch (Exception e) {
             throw new IllegalArgumentException("Unknown command: " + command);
         }
