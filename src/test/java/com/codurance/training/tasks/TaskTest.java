@@ -33,4 +33,10 @@ public class TaskTest {
         Task task = new Task(1, "Test task", false);
         assertTrue(task.isIdSame(1));
     }
+
+    @Test
+    public void isIdSameReturnsFalseTest() {
+        Task task = new Task(1, "Test task", false);
+        assertFalse(task.isIdSame(2));
+    }
 }
