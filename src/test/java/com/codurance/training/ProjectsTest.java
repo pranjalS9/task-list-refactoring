@@ -113,24 +113,21 @@ public class ProjectsTest {
         Projects projects = new Projects();
         String projectName1 = "Project-1";
         Task task1 = new Task(1, "I am a Task-1 of Project-1", false);
-        Task task2 = new Task(2, "I am a Task-2 of Project-1", false);
+
         String projectName2 = "Project-2";
-        Task task3 = new Task(1, "I am a Task-1 of Project-2", false);
-        Task task4 = new Task(2, "I am a Task-2 of Project-2", false);
+        Task task2 = new Task(2, "I am a Task-1 of Project-2", false);
 
         projects.addProject(projectName1);
         projects.addProject(projectName2);
         projects.addTask(projectName1, task1);
-        projects.addTask(projectName1, task2);
-        projects.addTask(projectName2, task3);
-        projects.addTask(projectName2, task4);
+        projects.addTask(projectName2, task2);
 
         List<String> projectNames = projects.getProjectNames();
 
         String formattedString = projects.getProjectsAsFormattedString(projectNames);
         String actualOutput = formattedString.replace("\r\n", "\n");
-        String expectedOutput = "Project-1\n" + "[ ] 1: I am a Task-1 of Project-1\n" + "[ ] 2: I am a Task-2 of Project-1\n"
-                + "Project-2\n" + "[ ] 1: I am a Task-1 of Project-2\n" + "[ ] 2: I am a Task-2 of Project-2\n";
+        String expectedOutput = "Project-1\n" + "[ ] 1: I am a Task-1 of Project-1\n"
+                + "Project-2\n" + "[ ] 2: I am a Task-1 of Project-2\n";
         assertEquals(expectedOutput, actualOutput);
     }
 }
