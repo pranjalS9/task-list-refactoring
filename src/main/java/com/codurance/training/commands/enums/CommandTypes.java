@@ -8,7 +8,7 @@ public enum CommandTypes {
 
     public static CommandTypes getCommandType(String command) {
         try {
-            return CommandTypes.valueOf(command.toLowerCase());
+            return CommandTypes.valueOf(command.toUpperCase());
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Unknown command: " + command);
         }
