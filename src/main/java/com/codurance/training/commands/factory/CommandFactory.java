@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CommandFactory {
-    Map<CommandTypes, ICommand> commands = new HashMap<>();
+    private final Map<CommandTypes, ICommand> commands = new HashMap<>();
 
     public void register(CommandTypes commandName, ICommand command) {
         commands.put(commandName, command);
@@ -19,9 +19,9 @@ public class CommandFactory {
     }
 
     public void registerAll(Commands commandService) {
-        register(CommandTypes.SHOW, args -> new ShowCommand(commandService));
-        register(CommandTypes.ADD, args -> new AddCommand(commandService));
-        register(CommandTypes.CHECK, args -> new CheckCommand(commandService));
-        register(CommandTypes.UNCHECK, args -> new UncheckCommand(commandService));
+        register(CommandTypes.SHOW, args -> commandService.show());
+        register(CommandTypes.ADD, commandService::add);
+        register(CommandTypes.CHECK, commandService::check);
+        register(CommandTypes.UNCHECK, commandService::uncheck);
     }
 }
