@@ -19,14 +19,27 @@ public class Commands {
 
     public void show() throws IOException {
         List<String> projectNames = projects.getProjectNames();
+        writer.write(getOutputString(projectNames));
+    }
+
+    private String getOutputString(List<String> projectNames) throws IOException {
+        StringBuilder outputString = new StringBuilder();
         for (String projectName : projectNames) {
-            writer.write(projectName);
-            writer.write("\n");
+            outputString.append(projectName);
+            outputString.append("\n");
             List<Task> tasks = projects.getProjectTasks(projectName);
-            for (Task t : tasks) {
-                writer.write(t.getFormattedTaskString());
-            }
+            outputString.append(getTasksAsFormattedString(tasks));
         }
+        return outputString.toString();
+    }
+
+    // I don't belong here
+    private static String getTasksAsFormattedString(List<Task> tasks) {
+        StringBuilder outputString = new StringBuilder();
+        for (Task t : tasks) {
+            outputString.append(t.getFormattedTaskString());
+        }
+        return outputString.toString();
     }
 
     public void check(String idString) {
