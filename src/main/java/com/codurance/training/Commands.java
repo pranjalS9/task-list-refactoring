@@ -19,11 +19,7 @@ public class Commands {
 
     public void show() throws IOException {
         List<String> projectNames = projects.getProjectNames();
-        writer.write(getOutputString(projectNames));
-    }
-
-    private String getOutputString(List<String> projectNames) {
-        return projects.getProjectsAsFormattedString(projectNames);
+        writer.write(projects.getProjectsAsFormattedString(projectNames));
     }
 
     public void check(String idString) {
