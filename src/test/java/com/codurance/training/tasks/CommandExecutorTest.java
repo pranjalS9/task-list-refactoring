@@ -1,6 +1,7 @@
 package com.codurance.training.tasks;
 
 import com.codurance.training.Projects;
+import com.codurance.training.commands.CommandExecutor;
 import com.codurance.training.commands.service.CommandService;
 import com.codurance.training.commands.factory.CommandFactory;
 import org.junit.Test;
@@ -12,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class CommandExecutorTest {
 
     @Test
-    public void executeAddProjectWithNoTaskTest() throws Exception {
+    public void executeAddProjectWithNoTaskTest() {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new CommandService(new Projects(), writer));
@@ -26,7 +27,7 @@ public class CommandExecutorTest {
     }
 
     @Test
-    public void executeAddProjectWithOneTaskTest() throws Exception {
+    public void executeAddProjectWithOneTaskTest() {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new CommandService(new Projects(), writer));
@@ -42,7 +43,7 @@ public class CommandExecutorTest {
     }
 
     @Test
-    public void executeAddProjectWithMultipleTaskTest() throws Exception {
+    public void executeAddProjectWithMultipleTaskTest() {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new CommandService(new Projects(), writer));
@@ -59,7 +60,7 @@ public class CommandExecutorTest {
     }
 
     @Test
-    public void executeAddProjectWithOneTaskAndThenCheckTest() throws Exception {
+    public void executeAddProjectWithOneTaskAndThenCheckTest() {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new CommandService(new Projects(), writer));
@@ -76,7 +77,7 @@ public class CommandExecutorTest {
     }
 
     @Test
-    public void executeAddProjectWithMultipleTaskThenCheckOneThenUncheckTest() throws Exception {
+    public void executeAddProjectWithMultipleTaskThenCheckOneThenUncheckTest() {
         StringWriter writer = new StringWriter();
         CommandFactory commandFactory = new CommandFactory();
         commandFactory.registerAll(new CommandService(new Projects(), writer));

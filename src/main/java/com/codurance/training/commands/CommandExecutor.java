@@ -1,4 +1,4 @@
-package com.codurance.training.tasks;
+package com.codurance.training.commands;
 
 import com.codurance.training.commands.enums.CommandTypes;
 import com.codurance.training.commands.factory.CommandFactory;

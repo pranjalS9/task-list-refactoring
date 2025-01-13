@@ -41,7 +41,7 @@
                     <programs>
                         <program>
                             <id>task-list</id>
-                            <mainClass>com.codurance.training.tasks.CommandExecutor</mainClass>
+                            <mainClass>com.codurance.training.commands.CommandExecutor</mainClass>
                         </program>
                     </programs>
                 </configuration>
