@@ -1,6 +1,7 @@
 package com.codurance.training.tasks;
 
 import com.codurance.training.commands.AddCommand;
+import com.codurance.training.commands.CheckCommand;
 import com.codurance.training.commands.Commands;
 import com.codurance.training.Projects;
 import com.codurance.training.commands.ShowCommand;
@@ -12,12 +13,14 @@ public final class TaskList {
     private final Commands commands;
     private final ShowCommand showCommand;
     private final AddCommand addCommand;
+    private final CheckCommand checkCommand;
 
     public TaskList(Writer writer) {
         Projects projects = new Projects();
         this.commands = new Commands(projects, writer);
         this.showCommand = new ShowCommand(commands);
         this.addCommand = new AddCommand(commands);
+        this.checkCommand = new CheckCommand(commands);
     }
 
     public void execute(String commandLine) throws Exception {
@@ -33,7 +36,7 @@ public final class TaskList {
                 addCommand.execute(args);
                 break;
             case "check":
-                commands.check(commandRest[1]);
+                checkCommand.execute(args);
                 break;
             case "uncheck":
                 commands.uncheck(commandRest[1]);
