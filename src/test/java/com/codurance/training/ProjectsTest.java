@@ -88,4 +88,23 @@ public class ProjectsTest {
         assertEquals(1, firstId);
         assertEquals(2, secondId);
     }
+
+    @Test
+    public void getTasksOfAProjectAsAFormattedStringTest() {
+        Projects projects = new Projects();
+        String projectName = "Project-1";
+        Task task1 = new Task(1, "My Test 1", false);
+        Task task2 = new Task(2, "My Test 2", false);
+
+        projects.addProject(projectName);
+        projects.addTask(projectName, task1);
+        projects.addTask(projectName, task2);
+
+        List<Task> tasks = projects.getProjectTasks(projectName);
+
+        String formattedString = projects.getTasksAsFormattedString(tasks);
+        String actualOutput = formattedString.replace("\r\n", "\n");
+
+        assertEquals("[ ] 1: My Test 1\n" + "[ ] 2: My Test 2\n", actualOutput);
+    }
 }
