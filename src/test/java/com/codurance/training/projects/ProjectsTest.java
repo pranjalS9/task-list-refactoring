@@ -1,6 +1,5 @@
-package com.codurance.training;
+package com.codurance.training.projects;
 
-import com.codurance.training.projects.Projects;
 import com.codurance.training.tasks.Task;
 import org.junit.Test;
 import java.util.List;
