@@ -34,4 +34,12 @@ public class Projects {
     public long nextId() {
         return ++lastId;
     }
+
+    String getTasksAsFormattedString(List<Task> tasks) {
+        StringBuilder outputString = new StringBuilder();
+        for (Task t : tasks) {
+            outputString.append(t.getFormattedTaskString());
+        }
+        return outputString.toString();
+    }
 }

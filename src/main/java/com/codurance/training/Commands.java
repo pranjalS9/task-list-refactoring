@@ -28,16 +28,7 @@ public class Commands {
             outputString.append(projectName);
             outputString.append("\n");
             List<Task> tasks = projects.getProjectTasks(projectName);
-            outputString.append(getTasksAsFormattedString(tasks));
-        }
-        return outputString.toString();
-    }
-
-    // I don't belong here
-    private static String getTasksAsFormattedString(List<Task> tasks) {
-        StringBuilder outputString = new StringBuilder();
-        for (Task t : tasks) {
-            outputString.append(t.getFormattedTaskString());
+            outputString.append(projects.getTasksAsFormattedString(tasks));
         }
         return outputString.toString();
     }
