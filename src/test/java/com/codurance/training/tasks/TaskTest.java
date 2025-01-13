@@ -27,4 +27,10 @@ public class TaskTest {
         task.setDone(false);
         assertFalse(task.isDone());
     }
+
+    @Test
+    public void isIdSameReturnsTrueTest() {
+        Task task = new Task(1, "Test task", false);
+        assertTrue(task.isIdSame(1));
+    }
 }
