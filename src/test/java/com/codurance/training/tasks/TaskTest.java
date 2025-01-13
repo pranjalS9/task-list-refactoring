@@ -2,16 +2,22 @@ package com.codurance.training.tasks;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class TaskTest {
 
     @Test
     public void taskInitializationTest() {
-        Task task = new Task(1L, "Test task", false);
-        assertEquals(1L, task.getId());
+        Task task = new Task(1, "Task 1", false);
+        assertEquals(1, task.getId());
         assertEquals("Test task", task.getDescription());
         assertFalse(task.isDone());
+    }
+
+    @Test
+    public void setTaskAsDoneTest() {
+        Task task = new Task(1, "Task 1", false);
+        task.setDone(true);
+        assertTrue(task.isDone());
     }
 }
