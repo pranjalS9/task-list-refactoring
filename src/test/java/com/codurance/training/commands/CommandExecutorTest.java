@@ -1,7 +1,6 @@
-package com.codurance.training.tasks;
+package com.codurance.training.commands;
 
 import com.codurance.training.projects.Projects;
-import com.codurance.training.commands.CommandExecutor;
 import com.codurance.training.commands.service.CommandService;
 import com.codurance.training.commands.factory.CommandFactory;
 import org.junit.Test;
