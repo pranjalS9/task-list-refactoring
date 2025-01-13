@@ -39,4 +39,11 @@ public class TaskTest {
         Task task = new Task(1, "Test task", false);
         assertFalse(task.isIdSame(2));
     }
+
+    @Test
+    public void getFormattedTaskStringNotDoneTest() {
+        Task task = new Task(1, "Test task", false);
+        String expected = "[ ] 1: Test task\n";
+        assertEquals(expected, task.getFormattedTaskString().replace("\r\n", "\n"));
+    }
 }
