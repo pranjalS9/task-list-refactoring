@@ -1,10 +1,7 @@
 package com.codurance.training.tasks;
 
-import com.codurance.training.commands.AddCommand;
-import com.codurance.training.commands.CheckCommand;
-import com.codurance.training.commands.Commands;
+import com.codurance.training.commands.*;
 import com.codurance.training.Projects;
-import com.codurance.training.commands.ShowCommand;
 
 import java.io.Writer;
 
@@ -14,6 +11,7 @@ public final class TaskList {
     private final ShowCommand showCommand;
     private final AddCommand addCommand;
     private final CheckCommand checkCommand;
+    private final UncheckCommand uncheckCommand;
 
     public TaskList(Writer writer) {
         Projects projects = new Projects();
@@ -21,6 +19,7 @@ public final class TaskList {
         this.showCommand = new ShowCommand(commands);
         this.addCommand = new AddCommand(commands);
         this.checkCommand = new CheckCommand(commands);
+        this.uncheckCommand = new UncheckCommand(commands);
     }
 
     public void execute(String commandLine) throws Exception {
@@ -39,7 +38,7 @@ public final class TaskList {
                 checkCommand.execute(args);
                 break;
             case "uncheck":
-                commands.uncheck(commandRest[1]);
+                uncheckCommand.execute(args);
                 break;
             default:
                 throw new IllegalArgumentException("Unknown command: " + command);
