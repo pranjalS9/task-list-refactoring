@@ -67,4 +67,18 @@ public class CommandServiceTest {
         String actualOutput = writer.toString().replace("\r\n", "\n");
         assertEquals(expectedOutput, actualOutput);
     }
+
+    @Test
+    public void addProjectInTheProjectsMapTest() throws IOException {
+        StringWriter writer = new StringWriter();
+        Projects projects = new Projects();
+
+        CommandService commandService = new CommandService(projects, writer);
+        commandService.add("project Project-1");
+        commandService.show();
+
+        String expectedOutput = "Project-1\n";
+        String actualOutput = writer.toString().replace("\r\n", "\n");
+        assertEquals(expectedOutput, actualOutput);
+    }
 }
