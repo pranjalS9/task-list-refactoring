@@ -38,7 +38,7 @@ public class CommandService {
             List<Task> tasks = projects.getProjectTasks(projectName);
             for (Task task : tasks) {
                 if (task.isIdSame(id)) {
-                    task.setDone(done);
+                    task.setStatus(done);
                     return;
                 }
             }

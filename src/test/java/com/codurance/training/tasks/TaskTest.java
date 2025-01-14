@@ -17,14 +17,14 @@ public class TaskTest {
     @Test
     public void setTaskAsDoneTest() {
         Task task = new Task(1, "Test task", false);
-        task.setDone(true);
+        task.setStatus(true);
         assertTrue(task.isDone());
     }
 
     @Test
     public void setTaskAsNotDoneTest() {
         Task task = new Task(1, "Task 1", true);
-        task.setDone(false);
+        task.setStatus(false);
         assertFalse(task.isDone());
     }
 

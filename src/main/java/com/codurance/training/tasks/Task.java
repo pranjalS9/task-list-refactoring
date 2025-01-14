@@ -27,7 +27,7 @@ public final class Task {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setStatus(boolean done) {
         this.done = done;
     }
 
