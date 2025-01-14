@@ -1,11 +1,11 @@
 package com.codurance.training.commands;
 
-import com.codurance.training.commands.interfaces.ICommand;
+import com.codurance.training.commands.interfaces.Command;
 import com.codurance.training.commands.service.CommandService;
 
 import java.io.IOException;
 
-public class ShowCommand implements ICommand {
+public class ShowCommand implements Command {
     private final CommandService commandService;
 
     public ShowCommand(CommandService commands) {
