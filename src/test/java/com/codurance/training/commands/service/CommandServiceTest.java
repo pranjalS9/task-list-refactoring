@@ -100,4 +100,24 @@ public class CommandServiceTest {
         String actualOutput = writer.toString().replace("\r\n", "\n");
         assertEquals(expectedOutput, actualOutput);
     }
+
+    @Test
+    public void toggleTaskStatusAsNotDoneTest() throws IOException {
+        StringWriter writer = new StringWriter();
+        Projects projects = new Projects();
+        String projectName = "Project-1";
+        Task task = new Task(1, "Task-1", false);
+
+        projects.addProject(projectName);
+        projects.addTask(projectName, task);
+
+        CommandService commandService = new CommandService(projects, writer);
+        commandService.toggleTaskStatus("1", true);
+        commandService.toggleTaskStatus("1", false);
+        commandService.show();
+
+        String expectedOutput = "Project-1\n" + "[ ] 1: Task-1\n";
+        String actualOutput = writer.toString().replace("\r\n", "\n");
+        assertEquals(expectedOutput, actualOutput);
+    }
 }
