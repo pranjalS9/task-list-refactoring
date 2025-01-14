@@ -33,7 +33,7 @@ public class CommandService {
 
     public void toggleTaskStatus(String idString, boolean done) {
         int id = Integer.parseInt(idString);
-        Task task = findTaskById(id, projects);
+        Task task = projects.findTaskById(id);
 
         if(task != null) {
             task.setStatus(done);
@@ -41,21 +41,6 @@ public class CommandService {
         }
         out.printf("Could not find a task with an ID of %d.", id);
         out.println();
-    }
-
-    // I don't belong here
-    private static Task findTaskById(int id, Projects projects) {
-        List<String> projectNames = projects.getProjectNames();
-        for (String projectName : projectNames) {
-            List<Task> tasks = projects.getProjectTasks(projectName);
-            for (Task task : tasks) {
-                if (task.isIdSame(id)) {
-                    return task;
-                }
-            }
-        }
-
-        return null;
     }
 
     public void add(String commandLine) {

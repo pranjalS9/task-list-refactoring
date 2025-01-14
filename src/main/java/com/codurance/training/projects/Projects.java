@@ -11,6 +11,19 @@ public class Projects {
     private final Map<String, List<Task>> projects = new LinkedHashMap<>();
     private long lastId = 0;
 
+    public Task findTaskById(int id) {
+        List<String> projectNames = getProjectNames();
+        for (String projectName : projectNames) {
+            List<Task> tasks = getProjectTasks(projectName);
+            for (Task task : tasks) {
+                if (task.isIdSame(id)) {
+                    return task;
+                }
+            }
+        }
+        return null;
+    }
+
     public void addTask(String projectName, Task task) {
         List<Task> projectTasks = getProjectTasks(projectName);
         if (projectTasks == null) {
